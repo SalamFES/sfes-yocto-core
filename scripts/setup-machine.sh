@@ -6,7 +6,9 @@ if [ $# -ne 1 ]; then
         exit 1
 fi
 
-./scripts/repo init -u https://gitlab.com/ahmadBM/ebs-manifest -b master -m ebscore/default.xml &&
+BRANCH=$(git symbolic-ref --short -q HEAD 2>/dev/null)
+
+./scripts/repo init -u https://gitlab.com/ahmadBM/ebs-manifest -b $BRANCH -m ebscore/default.xml &&
 ./scripts/repo sync &&
 
 MACHINE=$1 source setup-environment ./$1-build
