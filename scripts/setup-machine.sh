@@ -7,6 +7,7 @@ if [ $# -ne 1 ]; then
 fi
 
 BRANCH=$(git symbolic-ref --short -q HEAD 2>/dev/null)
+echo "BRANCH on $BRANCH"
 
 ./scripts/repo init -u https://gitlab.com/ahmadBM/ebs-manifest -b $BRANCH -m ebscore/default.xml &&
 ./scripts/repo sync &&
